@@ -7,7 +7,7 @@ take a pointer to char (char*) as input argument and then filters the characters
 ascending order by deleting the characters that do not meet this requirement. 
 
 For instance, if the string "qersatbcuvf" is provided as input argument to the function, the string 
-after exiting the function should be: "qrstuv".
+after exiting the function should be: "qrstuv".ttgf
 
 1. The definition of the function filter_ascending() contains two errors. You must correct these 
 errors and verify that the function provides the correct output. In the process of correcting the 
