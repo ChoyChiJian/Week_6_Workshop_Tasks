@@ -44,16 +44,15 @@ void insert_node(struct node** treePtr, int data);
 void inOrder(struct node* treePtr);
 void delete_tree(struct node** treePtr);
 
-int main() {
-	int temp = 0;
+int main(int argc, char* argv[]) 
+{
+	char *tokenPtr;
+	tokenPtr = strtok(argv[1],",");
 	struct node* treePtr = NULL;
-    printf("Enter the value of the new data member: ");
-	scanf("%d", &temp);
-    while (temp > 0)
+    while (tokenPtr != NULL)
     {
-        insert_node(&treePtr, temp);
-        printf("Enter the value of the new data member: ");
-        scanf("%d", &temp);            
+        insert_node(&treePtr, atoi(tokenPtr));
+		tokenPtr = strtok(NULL,",");
     }
     printf("Initial version of binary tree:\n");
     inOrder(treePtr);
@@ -99,7 +98,11 @@ void inOrder(struct node* treePtr)
 
 void delete_tree(struct node** treePtr)
 {
-       free(*treePtr);
-	   delete_tree(&((*treePtr)->leftPtr));
-       delete_tree(&((*treePtr)->rightPtr));
+	if(*treePtr != NULL) //if the node exist
+	{
+	   delete_tree(&((*treePtr)->leftPtr)); //look left
+       delete_tree(&((*treePtr)->rightPtr)); //look right
+	   free(*treePtr); //visit
+	   (*treePtr) = NULL; //inform the tree about node deletion
+	}
 }
